@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 function die() {
     echo "FATAL ERROR: $*"
