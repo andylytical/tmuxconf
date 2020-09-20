@@ -1,0 +1,2 @@
+# enable wm window titles
+set -g set-titles off

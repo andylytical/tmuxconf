@@ -1,0 +1,23 @@
+set -g default-terminal "screen"
+
+# set prefix key to / (slash)
+#unbind C-b
+#set -g prefix C-a
+set -g prefix C-_
+
+# force a reload of the config file
+unbind R
+bind-key R source-file ~/.tmux.conf
+
+# Bind for executing commands in all panes
+bind-key j set-window-option synchronize-panes 
+bind-key k set-window-option synchronize-panes off
+
+# scrollback buffer n lines
+set -g history-limit 5000
+
+# on-screen time for display-panes in ms
+set -g display-panes-time 2000
+
+# start window indexing at one instead of zero
+set -g base-index 1
