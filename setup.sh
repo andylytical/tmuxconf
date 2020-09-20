@@ -19,28 +19,16 @@ function continue_or_exit() {
 
 set -x
 
-PGM="$0"
-PWD=$( pwd )
+BASE=$( dirname $0 )
 TS=$(date +%s)
-SRCFN=tmux.conf
-TGTFN="${HOME}/.$SRCFN"
-SRC_CONF_DIR=tmux/config
-TGT_CONF_DIR="${HOME}/.$SRC_CONF_DIR"
 
-# Attempt to find absolute path to file
-basedn=$( dirname "$PGM" )
-workdir=$( readlink -e "$basedn" )
-abs_fn="${workdir}/$SRCFN"
-[[ -f "$abs_fn" ]] || die "Unable to find absolute path for source $SRCFN"
+SRCFN="${BASE}/tmux.conf"
+TGTFN="${HOME}/.tmux.conf"
+SRC_CONF_DIR="${BASE}/tmux/config"
+TGT_CONF_DIR="${HOME}/.tmux/config"
 
 # Install conf file
-install -vbC -S "$TS" "$SRCFN" "$TGTFN"
+install -vbC -S "$TS" -m 0600 "$SRCFN" "$TGTFN"
 
 # Install config files
-mkdir -p "$TGT_CONF_DIR"
-install -vbC -S "$TS" -t "$TGT_CONF_DIR" "$SRC_CONF_DIR/"*
-#find "$SRC_CONF_DIR" -type f -print \
-#| while read; do
-#    fn=$( basename "$REPLY" )
-#    install -vbC -S "$TS" -T "$REPLY" "$TGT_CONF_DIR/$fn"
-#done
+install -vbC -S "$TS" -m 0600 -D -t "$TGT_CONF_DIR" "$SRC_CONF_DIR/"*
