@@ -1,10 +1,12 @@
 # Create panes with Vertical and Horizontal
-unbind %
 bind v split-window -h
 bind h split-window -v
 
 # Zoom
 bind-key -r z resize-pane -Z 
+
+# Toggle executing commands in all panes
+bind-key j set-window-option synchronize-panes
 
 
 #See also: https://gist.github.com/spicycode/1229612
