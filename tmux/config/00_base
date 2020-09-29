@@ -2,8 +2,8 @@ set -g default-terminal "screen"
 
 # set prefix key to / (slash)
 #unbind C-b
-#set -g prefix C-a
-set -g prefix C-_
+set -g prefix C-a
+#set -g prefix C-_
 
 # scrollback buffer n lines
 set -g history-limit 5000
