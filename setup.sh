@@ -27,3 +27,8 @@ TGT_CONF_DIR="${HOME}/.config/tmux"
 
 # Install config files
 install -vbC -S "$TS" -m 0600 -D -t "$TGT_CONF_DIR" "$SRC_CONF_DIR/"*.conf
+
+# clean backed up files (so the simple glob in tmux.conf won't match them)
+bkup_dir="$TGT_CONF_DIR"/bkup
+mkdir -p "$bkup_dir"
+find "$TGT_CONF_DIR" -maxdepth 1 -type f -name '*[0-9]' -exec mv {} "$bkup_dir"/ \;
