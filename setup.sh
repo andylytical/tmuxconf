@@ -22,13 +22,8 @@ set -x
 BASE=$( dirname $0 )
 TS=$(date +%s)
 
-SRCFN="${BASE}/tmux.conf"
-TGTFN="${HOME}/.tmux.conf"
-SRC_CONF_DIR="${BASE}/tmux/config"
-TGT_CONF_DIR="${HOME}/.tmux/config"
-
-# Install conf file
-install -vbC -S "$TS" -m 0600 "$SRCFN" "$TGTFN"
+SRC_CONF_DIR="${BASE}/config"
+TGT_CONF_DIR="${HOME}/.config/tmux"
 
 # Install config files
-install -vbC -S "$TS" -m 0600 -D -t "$TGT_CONF_DIR" "$SRC_CONF_DIR/"*
+install -vbC -S "$TS" -m 0600 -D -t "$TGT_CONF_DIR" "$SRC_CONF_DIR/"*.conf
